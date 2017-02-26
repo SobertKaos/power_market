@@ -41,16 +41,20 @@ class Market(object):
         """
         bids = list()
         bids.append(member.get_bid(time_slot) for member in self.members)
-
+        return bids
 
     def settle_bids(self):
         pass
+
+    def report_bids(self, bids):
+        for member in self.members:
+            member.recieve_bid(bids)
 
 
 class Agent(object):
     """ docstring for Agent """
     def __init__(self):
-        pass
+        self.demand = dict()
 
     def get_demand(self):
         pass
@@ -63,6 +67,9 @@ class Agent(object):
         Returns:
             bid (dict) - dict containing the keys 'agent_name', 'time_slot', 'amount' and 'bid'
         """
+        pass
+
+    def recieve_bid(self, bid):
         pass
 
 if __name__ == '__main__':
