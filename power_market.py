@@ -21,8 +21,27 @@ class Market(object):
             pass
         return joined_market
 
-    def get_bids(self):
-        pass
+    def get_bids(self, time_slot):
+        """
+        Gets bids from everyone in self.members
+        Arguments:
+            time_slot (datetime) - time slot for bids to be collected
+        Returns:
+            bids (dict) - all collected bids
+
+        Example usage:
+        Market.get_bids()
+        returns bids:
+        [{agent_name: '<name>',
+          time_slot: datetime,
+          amount: <float>,
+          bid: <float>
+          }
+        ]
+        """
+        bids = list()
+        bids.append(member.get_bid(time_slot) for member in self.members)
+
 
     def settle_bids(self):
         pass
@@ -36,7 +55,14 @@ class Agent(object):
     def get_demand(self):
         pass
 
-    def post_bid(self):
+    def get_bid(self, index):
+        """
+        Gets bid for the index time slot
+        Arguments:
+            index (datetime) - Refers to the timeslot for which the bid is concerned
+        Returns:
+            bid (dict) - dict containing the keys 'agent_name', 'time_slot', 'amount' and 'bid'
+        """
         pass
 
 if __name__ == '__main__':
